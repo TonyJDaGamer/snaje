@@ -1,8 +1,10 @@
 {
-    "rewrites": [
-      { "source": "/home", "destination": "/index.html" }
-      { "source": "/signup", "destination": "/signups.html" }
+    "cleanUrls": true,
+    "redirects": [
+      {
+        "source": "/index",
+        "destination": "/index.html",
+        "permanent": true
+      }
     ]
-
-
   }
