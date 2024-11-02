@@ -3,99 +3,187 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SNAJE - Student Network for Academic Journey and Excellence</title>
+    <title>SNAJE - Social Network for Academic Journey and Excellence</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            line-height: 1.6;
-            color: #333;
+        body, html {
             margin: 0;
             padding: 0;
-            background-image: url('https://images.unsplash.com/photo-1501290836517-b22a21c522a4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');
-            background-size: cover;
-            background-attachment: fixed;
+            font-family: Arial, sans-serif;
+            background-color: #1a202c;
+            color: white;
+            min-height: 100vh;
         }
         .container {
-            width: 80%;
-            margin: auto;
-            overflow: hidden;
-            padding: 20px;
-            background-color: rgba(255, 255, 255, 0.9);
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
         }
-        header {
-            background: linear-gradient(to right, #f38a13, #dba634);
-            color: #ffffff;
-            padding: 30px 0;
-            text-align: center;
+        nav {
+            background-color: black;
+            padding: 1rem 0;
+            position: relative;
+            z-index: 10;
         }
-        header .container {
-            background-color: transparent;
-            box-shadow: none;
+        nav .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
-        header h1 {
-            margin: 0;
-            font-size: 3em;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin-left: 1rem;
+            transition: color 0.3s;
         }
-        header p {
-            font-size: 1.2em;
-            margin-top: 10px;
+        nav a:hover {
+            color: #f6ad55;
         }
-        .section {
-            margin-bottom: 20px;
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #f6ad55;
         }
-        .cta {
+        .main-content {
+            display: flex;
+            flex-direction: column;
+        }
+        .content-wrapper {
+            padding: 2rem;
+            z-index: 10;
+        }
+        .content-box {
+            background-color: black;
+            border: 1px solid white;
+            border-radius: 0.5rem;
+            padding: 1.5rem;
+            box-shadow: 0 4px 6px rgba(246, 173, 85, 0.2);
+        }
+        h1, h2 {
+            background: linear-gradient(to right, #f6ad55, #fbd38d);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+        h2 {
+            font-size: 1.5rem;
+            margin-top: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        p, ul {
+            color: #cbd5e0;
+        }
+        ul {
+            padding-left: 1.5rem;
+        }
+        .cta-button {
             display: block;
-            background: #e74c3c;
-            color: #ffffff;
-            padding: 10px 20px;
+            width: 100%;
+            padding: 0.75rem;
+            margin-top: 2rem;
+            background: linear-gradient(to right, #f6ad55, #fbd38d);
+            color: white;
             text-align: center;
             text-decoration: none;
+            border-radius: 0.25rem;
             font-weight: bold;
-            margin-top: 20px;
-            border-radius: 5px;
-            transition: background-color 0.3s ease;
+            transition: opacity 0.3s;
         }
-        .cta:hover {
-            background: #c0392b;
+        .cta-button:hover {
+            opacity: 0.9;
+        }
+        .image-wrapper {
+            position: fixed;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            z-index: 1;
+        }
+        .image-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.3;
+        }
+        @media (min-width: 768px) {
+            .main-content {
+                flex-direction: row;
+            }
+            .content-wrapper {
+                width: 50%;
+            }
+            .image-wrapper {
+                position: static;
+                width: 50%;
+            }
+            .image-wrapper img {
+                opacity: 1;
+            }
         }
     </style>
 </head>
 <body>
-    <header>
+    <nav>
         <div class="container">
-            <h1>SNAJE</h1>
-            <p>Social Network for Academic Journey and Excellence</p>
+            <a href="#" class="logo">SNAJE</a>
+            <div>
+                <a href="#about">About</a>
+                <a href="#features">Features</a>
+                <a href="#coming-soon">Coming Soon</a>
+            </div>
         </div>
-    </header>
+    </nav>
 
-    <div class="container">
-        <section class="section">
-            <h2>About SNAJE</h2>
-            <p>SNAJE was founded on November 2nd, 2024 by Sarmad Zia and Antonio Juarez. This is an innovative platform designed for students to network and share their progress in their academic careers. Our mission is to create a supportive community where students can connect, collaborate, and celebrate their educational achievements.</p>
-        </section>
+    <div class="main-content">
+        <div class="content-wrapper">
+            <div class="content-box">
+                <header>
+                    <h1>SNAJE</h1>
+                    <p style="font-size: 1.25rem; background: linear-gradient(to right, #f6ad55, #fbd38d); -webkit-background-clip: text; background-clip: text; color: transparent;">
+                        Social Network for Academic Journey and Excellence
+                    </p>
+                </header>
 
-        <section class="section">
-            <h2>Features</h2>
-            <ul>
-                <li>Connect with peers from various academic backgrounds</li>
-                <li>Share and track your academic milestones</li>
-                <li>Collaborate on projects and research</li>
-                <li>Access resources and mentorship opportunities</li>
-                <li>Showcase your achievements and skills</li>
-            </ul>
-        </section>
+                <main>
+                    <section id="about">
+                        <h2>About SNAJE</h2>
+                        <p>
+                            SNAJE was founded on November 2nd, 2024 by Sarmad Zia and Antonio Juarez. This is an innovative platform designed for students to network and share their progress in their academic careers. Our mission is to create a supportive community where students can connect, collaborate, and celebrate their educational achievements.
+                        </p>
+                    </section>
 
-        <section class="section">
-            <h2>Coming Soon</h2>
-            <p>We're working hard to bring SNAJE to life! Our team is developing cutting-edge features to enhance your academic networking experience. Stay tuned for updates and be among the first to join this exciting community.</p>
-        </section>
+                    <section id="features">
+                        <h2>Features</h2>
+                        <ul>
+                            <li>Connect with peers from various academic backgrounds</li>
+                            <li>Share and track your academic milestones</li>
+                            <li>Collaborate on projects and research</li>
+                            <li>Access resources and mentorship opportunities</li>
+                            <li>Showcase your achievements and skills</li>
+                        </ul>
+                    </section>
 
-        <footer>
-            <a href="signups.html" class="cta">Sign up for updates</a>
-        </footer>
+                    <section id="coming-soon">
+                        <h2>Coming Soon</h2>
+                        <p>
+                            We're working hard to bring SNAJE to life! Our team is developing cutting-edge features to enhance your academic networking experience. Stay tuned for updates and be among the first to join this exciting community.
+                        </p>
+                    </section>
+                </main>
+
+                <footer>
+                    <a href="signups.html" class="cta-button">Sign up for updates</a>
+                </footer>
+            </div>
+        </div>
+
+        <div class="image-wrapper">
+            <img src="https://images.unsplash.com/photo-1501290836517-b22a21c522a4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Academic background">
+        </div>
     </div>
 </body>
 </html>
