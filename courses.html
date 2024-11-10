@@ -12,6 +12,7 @@
             --accent-light: #ffa500;
             --accent-dark: #ff4500;
             --primary-color: #f6ad55;
+            --popup-bg: rgba(0, 0, 0, 0.8);
         }
         body {
             font-family: 'Arial', sans-serif;
@@ -45,14 +46,39 @@
             color: var(--primary-color);
             text-decoration: none;
         }
-        nav a {
-            color: var(--text);
-            text-decoration: none;
-            margin-left: 1rem;
-            transition: color 0.3s;
+        .dropdown {
+            position: relative;
+            display: inline-block;
         }
-        nav a:hover {
-            color: var(--primary-color);
+        .dropbtn {
+            background-color: transparent;
+            color: var(--text);
+            padding: 10px;
+            font-size: 16px;
+            border: none;
+            cursor: pointer;
+        }
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            right: 0;
+            background-color: var(--card-bg);
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+        }
+        .dropdown-content a {
+            color: var(--text);
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+        }
+        .dropdown-content a:hover {
+            background-color: var(--primary-color);
+            color: var(--background);
+        }
+        .show {
+            display: block;
         }
         h1 {
             font-size: 2.5rem;
@@ -99,20 +125,13 @@
         .courses {
             display: grid;
             gap: 1.5rem;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
         }
         .course {
             background-color: var(--card-bg);
             border: 1px solid #3a3a3a;
             border-radius: 8px;
             overflow: hidden;
-        }
-        .course-image {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-        }
-        .course-content {
             padding: 1rem;
         }
         .course-title {
@@ -134,6 +153,7 @@
             text-decoration: none;
             border-radius: 4px;
             transition: opacity 0.3s;
+            cursor: pointer;
         }
         .course-link:hover {
             opacity: 0.9;
@@ -145,16 +165,63 @@
         .category-header.active .toggle-icon {
             transform: rotate(180deg);
         }
+        .popup {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: var(--popup-bg);
+            z-index: 1001;
+            justify-content: center;
+            align-items: center;
+        }
+        .popup-content {
+            background-color: var(--card-bg);
+            padding: 2rem;
+            border-radius: 8px;
+            text-align: center;
+        }
+        .popup-links {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        .popup-link {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            background-color: var(--primary-color);
+            color: var(--background);
+            text-decoration: none;
+            border-radius: 4px;
+            transition: opacity 0.3s;
+        }
+        .popup-link:hover {
+            opacity: 0.8;
+        }
+        .close-popup {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            font-size: 1.5rem;
+            color: var(--text);
+            cursor: pointer;
+        }
     </style>
 </head>
 <body>
     <nav>
         <div class="container">
             <a href="index.html" class="logo">SNAJE</a>
-            <div>
-                <a href="#about">About</a>
-                <a href="#features">Features</a>
-                <a href="signups.html">Sign up For Updates</a>
+            <div class="dropdown">
+                <button class="dropbtn">Menu ▼</button>
+                <div class="dropdown-content">
+                    <a href="courses.html">Courses</a>
+                    <a href="signups.html">Sign Up For Updates</a>
+                    <a href="#coming-soon">Coming Soon</a>
+                </div>
             </div>
         </div>
     </nav>
@@ -167,22 +234,115 @@
         <div id="course-list"></div>
     </div>
 
+    <div id="popup" class="popup">
+        <div class="popup-content">
+            <h2 id="popup-title"></h2>
+            <div class="popup-links">
+                <a href="#" id="lesson-link" class="popup-link">Lesson</a>
+                <a href="#" id="notes-link" class="popup-link">Blank Notes (PDF)</a>
+                <a href="#" id="practice-link" class="popup-link">Practice (Interactable Quiz & PDF)</a>
+            </div>
+            <span class="close-popup">&times;</span>
+        </div>
+    </div>
+
     <script>
         const coursesData = {
             "Calc 2": [
-                { id: 1, name: "(Week 1) Integrals", description: "Learn the basics of integrals with interactable lesson and practice for beginners!", image: "https://cdn.discordapp.com/attachments/826096340844937246/1304565000475643905/image.png?ex=672fda55&is=672e88d5&hm=76a4d651f19fa097c7073f1136bf98a4177cf1297bd201d280a33f73e5cec6b0&", link: "pages/calc2/week1(calc2).html" },
-                { id: 2, name: "(Week 2) Coming Soon", description: "Learn the basics of integrals with interactable lesson and practice for beginners!", image: "https://cdn.discordapp.com/attachments/826096340844937246/1304565000475643905/image.png?ex=672fda55&is=672e88d5&hm=76a4d651f19fa097c7073f1136bf98a4177cf1297bd201d280a33f73e5cec6b0&", link: "notfound.html" },
-                { id: 3, name: "(Week 3) Coming Soon", description: "Learn the basics of integrals with interactable lesson and practice for beginners!", image: "https://cdn.discordapp.com/attachments/826096340844937246/1304565000475643905/image.png?ex=672fda55&is=672e88d5&hm=76a4d651f19fa097c7073f1136bf98a4177cf1297bd201d280a33f73e5cec6b0&", link: "notfound.html" },
+                { 
+                    id: 1, 
+                    name: "(Week 1) Integrals", 
+                    description: "Learn the basics of integrals with interactable lesson and practice for beginners!",
+                    links: {
+                        lesson: href="calc2/week1(calc2).html",
+                        notes: "#",
+                        practice: "#"
+                    }
+                },
+                { 
+                    id: 2, 
+                    name: "(Week 2) Coming Soon", 
+                    description: "Learn the basics of integrals with interactable lesson and practice for beginners!",
+                    links: {
+                        lesson: "#",
+                        notes: "#",
+                        practice: "#"
+                    }
+                },
+                { 
+                    id: 3, 
+                    name: "(Week 3) Coming Soon", 
+                    description: "Learn the basics of integrals with interactable lesson and practice for beginners!",
+                    links: {
+                        lesson: "#",
+                        notes: "#",
+                        practice: "#"
+                    }
+                },
             ],
             "Data Science": [
-                { id: 4, name: "Python for Data Analysis", description: "Explore data analysis techniques using Python and popular libraries like Pandas and NumPy.", image: "https://cdn.discordapp.com/attachments/826096340844937246/1304565000475643905/image.png?ex=672fda55&is=672e88d5&hm=76a4d651f19fa097c7073f1136bf98a4177cf1297bd201d280a33f73e5cec6b0&", link: "notfound.html" },
-                { id: 5, name: "Machine Learning Basics", description: "Understand the fundamentals of machine learning and start building predictive models.", image: "https://cdn.discordapp.com/attachments/826096340844937246/1304565000475643905/image.png?ex=672fda55&is=672e88d5&hm=76a4d651f19fa097c7073f1136bf98a4177cf1297bd201d280a33f73e5cec6b0&", link: "notfound.html" },
-                { id: 6, name: "Big Data Technologies", description: "Learn about big data processing with technologies like Hadoop and Spark.", image: "https://cdn.discordapp.com/attachments/826096340844937246/1304565000475643905/image.png?ex=672fda55&is=672e88d5&hm=76a4d651f19fa097c7073f1136bf98a4177cf1297bd201d280a33f73e5cec6b0&", link: "notfound.html" },
+                { 
+                    id: 4, 
+                    name: "Python for Data Analysis", 
+                    description: "Explore data analysis techniques using Python and popular libraries like Pandas and NumPy.",
+                    links: {
+                        lesson: "#",
+                        notes: "#",
+                        practice: "#"
+                    }
+                },
+                { 
+                    id: 5, 
+                    name: "Machine Learning Basics", 
+                    description: "Understand the fundamentals of machine learning and start building predictive models.",
+                    links: {
+                        lesson: "#",
+                        notes: "#",
+                        practice: "#"
+                    }
+                },
+                { 
+                    id: 6, 
+                    name: "Big Data Technologies", 
+                    description: "Learn about big data processing with technologies like Hadoop and Spark.",
+                    links: {
+                        lesson: "#",
+                        notes: "#",
+                        practice: "#"
+                    }
+                },
             ],
             "Design": [
-                { id: 7, name: "UI/UX Principles", description: "Discover the principles of user interface and user experience design for digital products.", image: "https://cdn.discordapp.com/attachments/826096340844937246/1304565000475643905/image.png?ex=672fda55&is=672e88d5&hm=76a4d651f19fa097c7073f1136bf98a4177cf1297bd201d280a33f73e5cec6b0&", link: "notfound.html" },
-                { id: 8, name: "Adobe Photoshop Essentials", description: "Master the essential tools and techniques in Adobe Photoshop for graphic design.", image: "https://cdn.discordapp.com/attachments/826096340844937246/1304565000475643905/image.png?ex=672fda55&is=672e88d5&hm=76a4d651f19fa097c7073f1136bf98a4177cf1297bd201d280a33f73e5cec6b0&", link: "notfound.html" },
-                { id: 9, name: "Responsive Web Design", description: "Learn how to create websites that look great on any device using responsive design techniques.", image: "https://cdn.discordapp.com/attachments/826096340844937246/1304565000475643905/image.png?ex=672fda55&is=672e88d5&hm=76a4d651f19fa097c7073f1136bf98a4177cf1297bd201d280a33f73e5cec6b0&", link: "notfound.html" },
+                { 
+                    id: 7, 
+                    name: "UI/UX Principles", 
+                    description: "Discover the principles of user interface and user experience design for digital products.",
+                    links: {
+                        lesson: "#",
+                        notes: "#",
+                        practice: "#"
+                    }
+                },
+                { 
+                    id: 8, 
+                    name: "Adobe Photoshop Essentials", 
+                    description: "Master the essential tools and techniques in Adobe Photoshop for graphic design.",
+                    links: {
+                        lesson: "#",
+                        notes: "#",
+                        practice: "#"
+                    }
+                },
+                { 
+                    id: 9, 
+                    name: "Responsive Web Design", 
+                    description: "Learn how to create websites that look great on any device using responsive design techniques.",
+                    links: {
+                        lesson: "#",
+                        notes: "#",
+                        practice: "#"
+                    }
+                },
             ],
         };
 
@@ -202,11 +362,10 @@
                         <div class="courses">
                             ${categoryCourses.map(course => `
                                 <div class="course">
-                                    <img src="${course.image}" alt="${course.name}" class="course-image">
                                     <div class="course-content">
                                         <h3 class="course-title">${course.name}</h3>
                                         <p class="course-description">${course.description}</p>
-                                        <a href="${course.link}" class="course-link">Explore</a>
+                                        <button class="course-link" data-course-id="${course.id}">Explore</button>
                                     </div>
                                 </div>
                             `).join('')}
@@ -222,6 +381,40 @@
                     content.classList.toggle('show');
                 });
             });
+
+            // Add event listeners for Explore buttons
+            document.querySelectorAll('.course-link').forEach(button => {
+                button.addEventListener('click', (e) => {
+                    const courseId = e.target.getAttribute('data-course-id');
+                    showPopup(courseId);
+                });
+            });
+        }
+
+        function showPopup(courseId) {
+            const course = Object.values(coursesData)
+                .flat()
+                .find(course => course.id === parseInt(courseId));
+
+            if (!course) return;
+
+            const popup = document.getElementById('popup');
+            const popupTitle = document.getElementById('popup-title');
+            const lessonLink = document.getElementById('lesson-link');
+            const notesLink = document.getElementById('notes-link');
+            const practiceLink = document.getElementById('practice-link');
+
+            popupTitle.textContent = course.name;
+            lessonLink.href = course.links.lesson;
+            notesLink.href = course.links.notes;
+            practiceLink.href = course.links.practice;
+
+            popup.style.display = 'flex';
+        }
+
+        function closePopup() {
+            const popup = document.getElementById('popup');
+            popup.style.display = 'none';
         }
 
         function filterCourses(searchTerm) {
@@ -251,6 +444,33 @@
 
         document.getElementById('search').addEventListener('input', (e) => {
             filterCourses(e.target.value);
+        });
+
+        document.querySelector('.close-popup').addEventListener('click', closePopup);
+
+        // Close popup when clicking outside the content
+        document.getElementById('popup').addEventListener('click', (e) => {
+            if (e.target === document.getElementById('popup')) {
+                closePopup();
+            }
+        });
+
+        // Dropdown menu functionality
+        document.querySelector('.dropbtn').addEventListener('click', function() {
+            document.querySelector('.dropdown-content').classList.toggle('show');
+        });
+
+        // Close the dropdown menu if the user clicks outside of it
+        window.addEventListener('click', function(event) {
+            if (!event.target.matches('.dropbtn')) {
+                var dropdowns = document.getElementsByClassName("dropdown-content");
+                for (var i = 0; i < dropdowns.length; i++) {
+                    var openDropdown = dropdowns[i];
+                    if (openDropdown.classList.contains('show')) {
+                        openDropdown.classList.remove('show');
+                    }
+                }
+            }
         });
 
         // Initial render

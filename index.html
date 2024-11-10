@@ -13,6 +13,64 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <head>
         <style>
+         
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        nav {
+            background-color: rgba(0, 0, 0, 0.8);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+        }
+        nav .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+        .dropbtn {
+            background-color: transparent;
+            color: var(--text);
+            padding: 10px;
+            font-size: 16px;
+            border: none;
+            cursor: pointer;
+        }
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            right: 0;
+            background-color: var(--card-bg);
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+        }
+        .dropdown-content a {
+            color: var(--text);
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+        }
+        .dropdown-content a:hover {
+            background-color: var(--primary-color);
+            color: var(--background);
+        }
+        .show {
+            display: block;}
             :root {
                 --primary-color: #f6ad55;
                 --secondary-color: #fbd38d;
@@ -166,19 +224,24 @@
                     height: 100%;
                 }
             }
+            
         </style>
     </head>
     <body>
         <nav>
             <div class="container">
-                <a href="#" class="logo">SNAJE</a>
-                <div>
-                    <a href="#about">About</a>
-                    <a href="#features">Features</a>
-                    <a href="pages/">Sign Up For updates</a>
+                <a href="index.html" class="logo">SNAJE</a>
+                <div class="dropdown">
+                    <button class="dropbtn">Menu ▼</button>
+                    <div class="dropdown-content">
+                        <a href="courses.html">Courses</a>
+                        <a href="signups.html">Sign Up For Updates</a>
+                        <a href="#coming-soon">Coming Soon</a>
+                    </div>
                 </div>
             </div>
         </nav>
+    
     
         <div class="main-content">
             <div class="content-wrapper">
@@ -241,5 +304,28 @@
                 </p>
             </div>
         </footer>
+    <script>
+
+        // Dropdown menu functionality
+        document.querySelector('.dropbtn').addEventListener('click', function() {
+            document.querySelector('.dropdown-content').classList.toggle('show');
+        });
+
+        // Close the dropdown menu if the user clicks outside of it
+        window.addEventListener('click', function(event) {
+            if (!event.target.matches('.dropbtn')) {
+                var dropdowns = document.getElementsByClassName("dropdown-content");
+                for (var i = 0; i < dropdowns.length; i++) {
+                    var openDropdown = dropdowns[i];
+                    if (openDropdown.classList.contains('show')) {
+                        openDropdown.classList.remove('show');
+                    }
+                }
+            }
+        });
+
+        // Initial render
+        renderCourses(coursesData);
+    </script>
     </body>
     </html>
