@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/snajelogo2-7uEx6kYqSxPLlbklrLqRDL9xJIkXCn.png" type="image/png" sizes="32x32" />
+    <title>Tools and Calculators</title>
+    <style>
+        :root {
+            --background: #1a1a1a;
+            --card-bg: #2a2a2a;
+            --text: #ffffff;
+            --accent-light: #ffa500;
+            --accent-dark: #ff4500;
+            --primary-color: #f6ad55;
+        }
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: var(--background);
+            color: var(--text);
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        nav {
+            background-color: rgba(0, 0, 0, 0.8);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+        }
+        nav .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+        .dropbtn {
+            background-color: transparent;
+            color: var(--text);
+            padding: 10px;
+            font-size: 16px;
+            border: none;
+            cursor: pointer;
+        }
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            right: 0;
+            background-color: var(--card-bg);
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+        }
+        .dropdown-content a {
+            color: var(--text);
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+        }
+        .dropdown-content a:hover {
+            background-color: var(--primary-color);
+            color: var(--background);
+        }
+        .show {
+            display: block;
+        }
+        h1 {
+            font-size: 2.5rem;
+            text-align: center;
+            margin: 2rem 0;
+            background: linear-gradient(45deg, var(--accent-light), var(--accent-dark));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        #search {
+            width: 100%;
+            padding: 0.5rem;
+            margin-bottom: 2rem;
+            background-color: var(--card-bg);
+            border: 1px solid #3a3a3a;
+            color: var(--text);
+            font-size: 1rem;
+        }
+        .category {
+            margin-bottom: 2rem;
+        }
+        .category-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            padding: 0.5rem;
+            background-color: var(--card-bg);
+            border-radius: 4px;
+        }
+        .category-title {
+            font-size: 1.8rem;
+            color: var(--primary-color);
+            margin: 0;
+        }
+        .category-content {
+            display: none;
+            margin-top: 1rem;
+        }
+        .category-content.show {
+            display: block;
+        }
+        .tools {
+            display: grid;
+            gap: 1.5rem;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        }
+        .tool {
+            background-color: var(--card-bg);
+            border: 1px solid #3a3a3a;
+            border-radius: 8px;
+            overflow: hidden;
+            padding: 1rem;
+        }
+        .tool-title {
+            font-size: 1.2rem;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+        .tool-description {
+            color: #ccc;
+            margin-bottom: 1rem;
+        }
+        .tool-link {
+            display: inline-block;
+            width: 100%;
+            padding: 0.5rem;
+            background: linear-gradient(45deg, var(--accent-light), var(--accent-dark));
+            color: var(--text);
+            text-align: center;
+            text-decoration: none;
+            border-radius: 4px;
+            transition: opacity 0.3s;
+        }
+        .tool-link:hover {
+            opacity: 0.9;
+        }
+        .toggle-icon {
+            font-size: 1.5rem;
+            transition: transform 0.3s ease;
+        }
+        .category-header.active .toggle-icon {
+            transform: rotate(180deg);
+        }
+    </style>
+    
+</head>
+<body>
+    <nav>
+        <div class="container">
+            <a href="#" class="logo">
+                <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/snajelogo2-a5J95dSgkDK9L4XOUc5vjU4xVlFgZP.png" alt="SNAJE" style="height: 40px; width: auto;">
+            </a>
+            <div class="dropdown">
+                <button class="dropbtn">Menu ▼</button>
+                <div class="dropdown-content">
+                    <a href="#about">About</a>
+                    <a href="#features">Features</a>
+                    <a href="#coming-soon">Coming Soon</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <h1>Tools and Calculators</h1>
+        
+        <input type="text" id="search" placeholder="Search for a tool or calculator...">
+
+        <div id="tool-list"></div>
+    </div>
+
+    <script>
+        const toolsData = {
+            "Mathematics": [
+                { 
+                    id: 1, 
+                    name: "Quadratic Cordinate Calculator", 
+                    description: "Supper easy to use and get the answer within seconds.",
+                    link: href="QuadraticTools/quadratic.html"
+                },
+                { 
+                    id: 2, 
+                    name: "Matrix Operations", 
+                    description: "Coming Soon",
+                    link: "#matrix-operations"
+                },
+                { 
+                    id: 3, 
+                    name: "Equation Solver", 
+                    description: "Coming Soon",
+                    link: "#equation-solver"
+                },
+            ],
+            "Data Science (Coming Soon)": [
+                { 
+                    id: 4, 
+                    name: "Data Visualization Tool", 
+                    description: "Coming Soon",
+                    link: "#data-visualization"
+                },
+                { 
+                    id: 5, 
+                    name: "Statistical Analysis", 
+                    description: "Perform various statistical tests and analyses on your data.",
+                    link: "#statistical-analysis"
+                },
+                { 
+                    id: 6, 
+                    name: "Machine Learning Model Trainer", 
+                    description: "Train and evaluate machine learning models on your datasets.",
+                    link: "#ml-model-trainer"
+                },
+            ],
+            "Engineering (Coming Soon)": [
+                { 
+                    id: 7, 
+                    name: "Unit Converter", 
+                    description: "Convert between different units of measurement across various fields.",
+                    link: "#unit-converter"
+                },
+                { 
+                    id: 8, 
+                    name: "Circuit Simulator", 
+                    description: "Simulate and analyze electrical circuits with interactive diagrams.",
+                    link: "#circuit-simulator"
+                },
+                { 
+                    id: 9, 
+                    name: "Stress Calculator", 
+                    description: "Calculate stress and strain in materials under various loading conditions.",
+                    link: "#stress-calculator"
+                },
+            ],
+        };
+
+        function renderTools(tools) {
+            const toolList = document.getElementById('tool-list');
+            toolList.innerHTML = '';
+
+            Object.entries(tools).forEach(([category, categoryTools]) => {
+                const categoryElement = document.createElement('div');
+                categoryElement.className = 'category';
+                categoryElement.innerHTML = `
+                    <div class="category-header">
+                        <h2 class="category-title">${category}</h2>
+                        <span class="toggle-icon">▼</span>
+                    </div>
+                    <div class="category-content">
+                        <div class="tools">
+                            ${categoryTools.map(tool => `
+                                <div class="tool">
+                                    <div class="tool-content">
+                                        <h3 class="tool-title">
+                                            ${tool.name}
+                                        </h3>
+                                        <p class="tool-description">${tool.description}</p>
+                                        <a href="${tool.link}" class="tool-link">Use Tool</a>
+                                    </div>
+                                </div>
+                            `).join('')}
+                        </div>
+                    </div>
+                `;
+                toolList.appendChild(categoryElement);
+
+                const header = categoryElement.querySelector('.category-header');
+                const content = categoryElement.querySelector('.category-content');
+                header.addEventListener('click', () => {
+                    header.classList.toggle('active');
+                    content.classList.toggle('show');
+                });
+            });
+        }
+
+        function filterTools(searchTerm) {
+            const filteredTools = Object.entries(toolsData).reduce((acc, [category, tools]) => {
+                const filteredCategoryTools = tools.filter(tool =>
+                    tool.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                    tool.description.toLowerCase().includes(searchTerm.toLowerCase())
+                );
+                if (filteredCategoryTools.length > 0) {
+                    acc[category] = filteredCategoryTools;
+                }
+                return acc;
+            }, {});
+
+            renderTools(filteredTools);
+
+            // Show all categories that have matching tools
+            document.querySelectorAll('.category').forEach(category => {
+                const content = category.querySelector('.category-content');
+                const header = category.querySelector('.category-header');
+                if (category.querySelector('.tool')) {
+                    content.classList.add('show');
+                    header.classList.add('active');
+                }
+            });
+        }
+
+        document.getElementById('search').addEventListener('input', (e) => {
+            filterTools(e.target.value);
+        });
+
+        // Dropdown menu functionality
+        document.querySelector('.dropbtn').addEventListener('click', function() {
+            document.querySelector('.dropdown-content').classList.toggle('show');
+        });
+
+        // Close the dropdown menu if the user clicks outside of it
+        window.addEventListener('click', function(event) {
+            if (!event.target.matches('.dropbtn')) {
+                var dropdowns = document.getElementsByClassName("dropdown-content");
+                for (var i = 0; i < dropdowns.length; i++) {
+                    var openDropdown = dropdowns[i];
+                    if (openDropdown.classList.contains('show')) {
+                        openDropdown.classList.remove('show');
+                    }
+                }
+            }
+        });
+
+        // Initial render
+        renderTools(toolsData);
+    </script>
+</body>
+</html>

@@ -11,337 +11,446 @@
     <meta content="https://www.snaje.com" property="og:url" />
     <meta content="https://cdn.discordapp.com/attachments/826096340844937246/1329242595586736250/Screenshot_2025-01-14_at_9.51.16_PM.jpg?ex=6789a122&is=67884fa2&hm=7471ba3ef84ca8217de3e764a605b0cc469fcf8563e0666392b279a14a9109cd&" property="og:image" />
     <meta content="#43B581" data-react-helmet="true" name="theme-color" />
-
-    <style>
-        :root {
-            --primary-color: #4a90e2;
-            --secondary-color: #f39c12;
-            --bg-color: #000000;
-            --text-color: #ffffff;
-            --heading-gradient-start: #e6c088;
-            --heading-gradient-end: #a0702c;
-            --accent-color: #e74c3c;
-        }
-        body, html {
-            margin: 0;
-            padding: 0;
-            font-family: 'Roboto', sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            line-height: 1.6;
-            height: 100%;
-        }
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-        nav {
-            background-color: rgba(0, 0, 0, 0.8);
-            backdrop-filter: blur(10px);
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1000;
-        }
-        nav .container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1rem 20px;
-        }
-        nav a {
-            color: var(--text-color);
-            text-decoration: none;
-            margin-left: 1.5rem;
-            font-weight: 500;
-            transition: color 0.3s;
-        }
-        nav a:hover {
-            color: var(--heading-gradient-start);
-        }
-        .logo {
-            height: 40px;
-            width: auto;
-            transition: transform 0.3s ease;
-        }
-        .logo:hover {
-            transform: scale(1.05);
-        }
-        .hero-logo {
-            width: 200px;
-            height: auto;
-            margin-bottom: 1.5rem;
-        }
-        .cta-button {
-            display: inline-block;
-            padding: 1rem 2.5rem;
-            background: rgba(230, 192, 136, 0.9);
-            color: var(--bg-color);
-            text-decoration: none;
-            border-radius: 50px;
-            font-weight: bold;
-            font-size: 1.1rem;
-            border: 2px solid transparent;
-            cursor: pointer;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            position: relative;
-            overflow: hidden;
-            backdrop-filter: blur(5px);
-        }
-        .cta-button:before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(
-                120deg,
-                transparent,
-                rgba(255, 255, 255, 0.3),
-                transparent
-            );
-            transform: translateX(-100%);
-            transition: 0.6s;
-        }
-        .cta-button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 7px 14px rgba(0, 0, 0, 0.2);
-            border-color: var(--heading-gradient-start);
-            background: rgba(230, 192, 136, 1);
-        }
-        .cta-button:hover:before {
-            transform: translateX(100%);
-        }
-        .button-container {
-            display: flex;
-            justify-content: center;
-            gap: 1.5rem;
-        }
-        .hero {
-            height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background-image: url('https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-gwJSpHmcckBzHKoTVrHKQWBJrE124e.png');
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
-            position: relative;
-        }
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(0, 0, 0, 0.3);
-            pointer-events: none;
-        }
-        .hero-content {
-            position: relative;
-            z-index: 1;
-            text-align: center;
-            max-width: 800px;
-            padding: 2rem;
-            background: rgba(0, 0, 0, 0.6);
-            border-radius: 20px;
-            backdrop-filter: blur(10px);
-        }
-        .hero h1 {
-            font-size: 5rem;
-            margin-bottom: 1rem;
-            background: linear-gradient(to right, var(--heading-gradient-start), var(--heading-gradient-end));
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-        }
-        .hero p {
-            font-size: 1.5rem;
-            max-width: 600px;
-            margin: 0 auto 2rem;
-            color: var(--text-color);
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-        }
-
-        .main-content {
-            padding: 4rem 0;
-        }
-        .section {
-            margin-bottom: 4rem;
-            background: rgba(0, 0, 0, 0.6);
-            padding: 2rem;
-            border-radius: 10px;
-            backdrop-filter: blur(5px);
-        }
-        h2 {
-            font-size: 2.5rem;
-            margin-bottom: 1.5rem;
-            text-align: center;
-            background: linear-gradient(to right, var(--heading-gradient-start), var(--heading-gradient-end));
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-        }
-        .features {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-around;
-            gap: 2rem;
-        }
-        .feature-card {
-            flex-basis: calc(33.333% - 2rem);
-            background-color: rgba(255, 255, 255, 0.1);
-            border-radius: 8px;
-            padding: 1.5rem;
-            text-align: center;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-            transition: transform 0.3s;
-        }
-        .feature-card:hover {
-            transform: translateY(-5px);
-            background-color: rgba(255, 255, 255, 0.2);
-        }
-        .feature-card i {
-            font-size: 2.5rem;
-            background: linear-gradient(to right, var(--heading-gradient-start), var(--heading-gradient-end));
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            margin-bottom: 1rem;
-        }
-        .feature-card h3 {
-            background: linear-gradient(to right, var(--heading-gradient-start), var(--heading-gradient-end));
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-        }
-        footer {
-            background-color: rgba(0, 0, 0, 0.8);
-            color: white;
-            padding: 2rem 0;
-            text-align: center;
-        }
-        .social-links {
-            margin-top: 1rem;
-        }
-        .social-links a {
-            color: white;
-            font-size: 1.5rem;
-            margin: 0 0.5rem;
-            transition: color 0.3s;
-        }
-        .social-links a:hover {
-            color: var(--secondary-color);
-        }
-        @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 3rem;
+        <style>
+            :root {
+                --primary-color: #4a90e2;
+                --secondary-color: #f39c12;
+                --bg-color: #000000;
+                --text-color: #ffffff;
+                --heading-gradient-start: #e6c088;
+                --heading-gradient-end: #a0702c;
+                --accent-color: #e74c3c;
             }
-            .hero p {
-                font-size: 1.2rem;
+            body, html {
+                margin: 0;
+                padding: 0;
+                font-family: 'Roboto', sans-serif;
+                background-color: var(--bg-color);
+                color: var(--text-color);
+                line-height: 1.6;
+                height: 100%;
             }
-            .feature-card {
-                flex-basis: 100%;
+            .container {
+                max-width: 1200px;
+                margin: 0 auto;
+                padding: 0 20px;
             }
-            .button-container {
-                flex-direction: column;
+            nav {
+                background-color: rgba(0, 0, 0, 0.8);
+                backdrop-filter: blur(10px);
+                position: fixed;
+                width: 100%;
+                top: 0;
+                z-index: 1000;
             }
-            .hero-logo {
-                width: 150px;
+            nav .container {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                padding: 1rem 20px;
+            }
+            nav a {
+                color: var(--text-color);
+                text-decoration: none;
+                margin-left: 1.5rem;
+                font-weight: 500;
+                transition: color 0.3s;
+            }
+            nav a:hover {
+                color: var(--heading-gradient-start);
             }
             .logo {
-                height: 30px;
+                height: 40px;
+                width: auto;
+                transition: transform 0.3s ease;
             }
-        }
-    </style>
-</head>
-<body>
-    <nav>
-        <div class="container">
-            <a href="#">
-                <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/snajelogo2-rTdAcWnwctE3axbKfYKSZeHhHWF7FP.png" alt="SNAJE" class="logo">
-            </a>
-            <div>
-                <a href="#about">About</a>
-                <a href="#features">Features</a>
-                <a href="#coming-soon">Coming Soon</a>
-            </div>
-        </div>
-    </nav>
-
-    <header class="hero">
-        <div class="hero-content">
-            <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/snajelogo2-rTdAcWnwctE3axbKfYKSZeHhHWF7FP.png" alt="SNAJE" class="hero-logo">
-            <p>Social Network for Academic Journey and Excellence</p>
-            <div class="button-container">
-                <a href="#" class="cta-button">Sign Up</a>
-                <a href="courses.html" class="cta-button">Courses</a>
-            </div>
-        </div>
-    </header>
-
-    <main class="main-content">
-        <div class="container">
-            <section id="about" class="section">
-                <h2>About SNAJE</h2>
-                <p>
-                    SNAJE, founded on November 2nd, 2024 by Sarmad Zia and Antonio Juarez, is an innovative platform designed for students to network and share their progress in their academic careers. Our mission is to create a supportive community where students can connect, collaborate, and celebrate their educational achievements.
-                </p>
-            </section>
-
-            <section id="features" class="section">
-                <h2>Features</h2>
-                <div class="features">
-                    <div class="feature-card">
-                        <i class="fas fa-users"></i>
-                        <h3>Connect with Peers</h3>
-                        <p>Network with students from various academic backgrounds</p>
-                    </div>
-                    <div class="feature-card">
-                        <i class="fas fa-chart-line"></i>
-                        <h3>Track Progress</h3>
-                        <p>Share and monitor your academic milestones</p>
-                    </div>
-                    <div class="feature-card">
-                        <i class="fas fa-project-diagram"></i>
-                        <h3>Collaborate</h3>
-                        <p>Work together on projects and research</p>
-                    </div>
-                    <div class="feature-card">
-                        <i class="fas fa-book-reader"></i>
-                        <h3>Access Resources</h3>
-                        <p>Find mentorship opportunities and learning materials</p>
-                    </div>
-                    <div class="feature-card">
-                        <i class="fas fa-trophy"></i>
-                        <h3>Showcase Achievements</h3>
-                        <p>Display your skills and accomplishments</p>
-                    </div>
+            .logo:hover {
+                transform: scale(1.05);
+            }
+            .hero-logo {
+                width: 200px;
+                height: auto;
+                margin-bottom: 1.5rem;
+            }
+            .cta-button {
+                display: inline-block;
+                padding: 1rem 2.5rem;
+                background: rgba(230, 192, 136, 0.9);
+                color: var(--bg-color);
+                text-decoration: none;
+                border-radius: 50px;
+                font-weight: bold;
+                font-size: 1.1rem;
+                border: 2px solid transparent;
+                cursor: pointer;
+                transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+                position: relative;
+                overflow: hidden;
+                backdrop-filter: blur(5px);
+            }
+            .cta-button:before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: linear-gradient(
+                    120deg,
+                    transparent,
+                    rgba(255, 255, 255, 0.3),
+                    transparent
+                );
+                transform: translateX(-100%);
+                transition: 0.6s;
+            }
+            .cta-button:hover {
+                transform: translateY(-3px);
+                box-shadow: 0 7px 14px rgba(0, 0, 0, 0.2);
+                border-color: var(--heading-gradient-start);
+                background: rgba(230, 192, 136, 1);
+            }
+            .cta-button:hover:before {
+                transform: translateX(100%);
+            }
+            .button-container {
+                display: flex;
+                justify-content: center;
+                gap: 1.5rem;
+            }
+            .hero {
+                height: 100vh;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                background-image: url('https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-gwJSpHmcckBzHKoTVrHKQWBJrE124e.png');
+                background-size: cover;
+                background-position: center;
+                background-attachment: fixed;
+                position: relative;
+            }
+            .hero::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background: rgba(0, 0, 0, 0.3);
+                pointer-events: none;
+            }
+            .hero-content {
+                position: relative;
+                z-index: 1;
+                text-align: center;
+                max-width: 800px;
+                padding: 2rem;
+                background: rgba(0, 0, 0, 0.6);
+                border-radius: 20px;
+                backdrop-filter: blur(10px);
+            }
+            .hero h1 {
+                font-size: 5rem;
+                margin-bottom: 1rem;
+                background: linear-gradient(to right, var(--heading-gradient-start), var(--heading-gradient-end));
+                -webkit-background-clip: text;
+                background-clip: text;
+                color: transparent;
+                text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            }
+            .hero p {
+                font-size: 1.5rem;
+                max-width: 600px;
+                margin: 0 auto 2rem;
+                color: var(--text-color);
+                text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            }
+    
+            .main-content {
+                padding: 4rem 0;
+            }
+            .section {
+                margin-bottom: 4rem;
+                background: rgba(0, 0, 0, 0.6);
+                padding: 2rem;
+                border-radius: 10px;
+                backdrop-filter: blur(5px);
+            }
+            h2 {
+                font-size: 2.5rem;
+                margin-bottom: 1.5rem;
+                text-align: center;
+                background: linear-gradient(to right, var(--heading-gradient-start), var(--heading-gradient-end));
+                -webkit-background-clip: text;
+                background-clip: text;
+                color: transparent;
+            }
+            .features {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: space-around;
+                gap: 2rem;
+            }
+            .feature-card {
+                flex-basis: calc(33.333% - 2rem);
+                background-color: rgba(255, 255, 255, 0.1);
+                border-radius: 8px;
+                padding: 1.5rem;
+                text-align: center;
+                box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+                transition: transform 0.3s;
+            }
+            .feature-card:hover {
+                transform: translateY(-5px);
+                background-color: rgba(255, 255, 255, 0.2);
+            }
+            .feature-card i {
+                font-size: 2.5rem;
+                background: linear-gradient(to right, var(--heading-gradient-start), var(--heading-gradient-end));
+                -webkit-background-clip: text;
+                background-clip: text;
+                color: transparent;
+                margin-bottom: 1rem;
+            }
+            .feature-card h3 {
+                background: linear-gradient(to right, var(--heading-gradient-start), var(--heading-gradient-end));
+                -webkit-background-clip: text;
+                background-clip: text;
+                color: transparent;
+            }
+            footer {
+                background-color: rgba(0, 0, 0, 0.8);
+                color: white;
+                padding: 2rem 0;
+                text-align: center;
+            }
+            .social-links {
+                margin-top: 1rem;
+            }
+            .social-links a {
+                color: white;
+                font-size: 1.5rem;
+                margin: 0 0.5rem;
+                transition: color 0.3s;
+            }
+            .social-links a:hover {
+                color: var(--secondary-color);
+            }
+            @media (max-width: 768px) {
+                .hero h1 {
+                    font-size: 3rem;
+                }
+                .hero p {
+                    font-size: 1.2rem;
+                }
+                .feature-card {
+                    flex-basis: 100%;
+                }
+                .button-container {
+                    flex-direction: column;
+                }
+                .hero-logo {
+                    width: 150px;
+                }
+                .logo {
+                    height: 30px;
+                }
+            }
+            .modal {
+                display: none;
+                position: fixed;
+                z-index: 1001;
+                left: 0;
+                top: 0;
+                width: 100%;
+                height: 100%;
+                background-color: rgba(0,0,0,0.5);
+                backdrop-filter: blur(5px);
+            }
+    
+            .modal-content {
+                background: rgba(0, 0, 0, 0.9);
+                margin: 15% auto;
+                padding: 2rem;
+                border: 2px solid var(--heading-gradient-start);
+                border-radius: 15px;
+                width: 80%;
+                max-width: 500px;
+                position: relative;
+                animation: modalFade 0.3s ease-in-out;
+            }
+    
+            @keyframes modalFade {
+                from {
+                    opacity: 0;
+                    transform: translateY(-20px);
+                }
+                to {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+            }
+    
+            .modal-buttons {
+                display: flex;
+                justify-content: center;
+                gap: 1.5rem;
+                margin-top: 2rem;
+            }
+    
+            .modal-button {
+                padding: 1rem 2.5rem;
+                background: linear-gradient(to right, var(--heading-gradient-start), var(--heading-gradient-end));
+                color: var(--bg-color);
+                text-decoration: none;
+                border-radius: 50px;
+                font-weight: bold;
+                font-size: 1.1rem;
+                border: none;
+                cursor: pointer;
+                transition: all 0.3s ease;
+            }
+    
+            .modal-button:hover {
+                transform: translateY(-2px);
+                box-shadow: 0 5px 15px rgba(230, 192, 136, 0.3);
+            }
+    
+            .close-modal {
+                position: absolute;
+                right: 1rem;
+                top: 1rem;
+                font-size: 1.5rem;
+                color: var(--text-color);
+                cursor: pointer;
+                transition: color 0.3s ease;
+            }
+    
+            .close-modal:hover {
+                color: var(--heading-gradient-start);
+            }
+        </style>
+    </head>
+    <body>
+        <nav>
+            <div class="container">
+                <a href="#">
+                    <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/snajelogo2-rTdAcWnwctE3axbKfYKSZeHhHWF7FP.png" alt="SNAJE" class="logo">
+                </a>
+                <div>
+                    <a href="#about">About</a>
+                    <a href="#features">Features</a>
+                    <a href="#coming-soon">Coming Soon</a>
                 </div>
-            </section>
-
-            <section id="coming-soon" class="section">
-                <h2>Coming Soon</h2>
-                <p>
-                    We're working hard to bring SNAJE to life! Our team is developing cutting-edge features to enhance your academic networking experience. Stay tuned for updates and be among the first to join this exciting community.
-                </p>
-                <a href="signups.html" class="cta-button">Sign up for updates</a>
-            </section>
-        </div>
-    </main>
-
-    <footer>
-        <div class="container">
-            <p>&copy; 2024 SNAJE. All rights reserved.</p>
-            <div class="social-links">
-                <a href="https://www.instagram.com/_snaje_/profilecard/?igsh=aHJsOW9qdWEycDNm" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                <a href="https://youtube.com/@snaje-f1w?si=GI3urNH4BNs9zI29" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+            </div>
+        </nav>
+    
+        <header class="hero">
+            <div class="hero-content">
+                <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/snajelogo2-rTdAcWnwctE3axbKfYKSZeHhHWF7FP.png" alt="SNAJE" class="hero-logo">
+                <p>Social Network for Academic Journey and Excellence</p>
+                <div class="button-container">
+                    <a href="#" class="cta-button">Sign Up</a>
+                    <a href="#" class="cta-button" id="coursesBtn">Courses and Tools</a>
+                </div>
+            </div>
+        </header>
+    
+        <div id="coursesModal" class="modal">
+            <div class="modal-content">
+                <span class="close-modal">&times;</span>
+                <h2>Choose Your Path</h2>
+                <div class="modal-buttons">
+                    <a href="courses.html" class="modal-button">Courses</a>
+                    <a href="tools.html" class="modal-button">Tools</a>
+                </div>
             </div>
         </div>
-    </footer>
-</body>
-</html>
+    
+        <main class="main-content">
+            <div class="container">
+                <section id="about" class="section">
+                    <h2>About SNAJE</h2>
+                    <p>
+                        SNAJE, founded on November 2nd, 2024 by Sarmad Zia and Antonio Juarez, is an innovative platform designed for students to network and share their progress in their academic careers. Our mission is to create a supportive community where students can connect, collaborate, and celebrate their educational achievements.
+                    </p>
+                </section>
+    
+                <section id="features" class="section">
+                    <h2>Features</h2>
+                    <div class="features">
+                        <div class="feature-card">
+                            <i class="fas fa-users"></i>
+                            <h3>Connect with Peers</h3>
+                            <p>Network with students from various academic backgrounds</p>
+                        </div>
+                        <div class="feature-card">
+                            <i class="fas fa-chart-line"></i>
+                            <h3>Track Progress</h3>
+                            <p>Share and monitor your academic milestones</p>
+                        </div>
+                        <div class="feature-card">
+                            <i class="fas fa-project-diagram"></i>
+                            <h3>Collaborate</h3>
+                            <p>Work together on projects and research</p>
+                        </div>
+                        <div class="feature-card">
+                            <i class="fas fa-book-reader"></i>
+                            <h3>Access Resources</h3>
+                            <p>Find mentorship opportunities and learning materials</p>
+                        </div>
+                        <div class="feature-card">
+                            <i class="fas fa-trophy"></i>
+                            <h3>Showcase Achievements</h3>
+                            <p>Display your skills and accomplishments</p>
+                        </div>
+                    </div>
+                </section>
+    
+                <section id="coming-soon" class="section">
+                    <h2>Coming Soon</h2>
+                    <p>
+                        We're working hard to bring SNAJE to life! Our team is developing cutting-edge features to enhance your academic networking experience. Stay tuned for updates and be among the first to join this exciting community.
+                    </p>
+                    <a href="signups.html" class="cta-button">Sign up for updates</a>
+                </section>
+            </div>
+        </main>
+    
+        <footer>
+            <div class="container">
+                <p>&copy; 2024 SNAJE. All rights reserved.</p>
+                <div class="social-links">
+                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+        </footer>
+    
+        <script>
+            // Modal functionality
+            const modal = document.getElementById('coursesModal');
+            const coursesBtn = document.getElementById('coursesBtn');
+            const closeBtn = document.querySelector('.close-modal');
+    
+            coursesBtn.onclick = function(e) {
+                e.preventDefault();
+                modal.style.display = "block";
+                document.body.style.overflow = "hidden"; // Prevent scrolling when modal is open
+            }
+    
+            closeBtn.onclick = function() {
+                modal.style.display = "none";
+                document.body.style.overflow = "auto"; // Restore scrolling
+            }
+    
+            // Close modal when clicking outside
+            window.onclick = function(event) {
+                if (event.target == modal) {
+                    modal.style.display = "none";
+                    document.body.style.overflow = "auto";
+                }
+            }
+        </script>
+    </body>
+    </html>
