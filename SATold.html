@@ -1,0 +1,557 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SAT & PSAT Prep Course - Intensive Five-Day Program</title>
+    <link rel="icon" href="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/snajelogo2-7uEx6kYqSxPLlbklrLqRDL9xJIkXCn.png" type="image/png" sizes="32x32" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #ffffff;
+            --secondary-color: #e6c088;
+            --accent-color: #a0702c;
+            --text-color: #333333;
+            --bg-color: #f9f9f9;
+            --discount-color: #d35400;
+        }
+        body, html {
+            margin: 0;
+            padding: 0;
+            font-family: 'Roboto', 'Arial', sans-serif;
+            background-color: var(--primary-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            scroll-behavior: smooth;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        nav {
+            background-color: var(--primary-color);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        nav .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 20px;
+        }
+        nav a {
+            color: var(--text-color);
+            text-decoration: none;
+            margin-left: 1.5rem;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        nav a:hover {
+            color: var(--accent-color);
+        }
+        .logo {
+            height: 40px;
+            width: auto;
+        }
+        .hero {
+            background-image: linear-gradient(rgba(230, 192, 136, 0.2), rgba(230, 192, 136, 0.2)), url('https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-gwJSpHmcckBzHKoTVrHKQWBJrE124e.png');
+            background-size: cover;
+            background-position: center;
+            height: 80vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--text-color);
+            position: relative;
+        }
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(230, 192, 136, 0.4) 0%, rgba(255, 255, 255, 0.9) 100%);
+        }
+        .hero-content {
+            max-width: 800px;
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            position: relative;
+            z-index: 2;
+        }
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            color: var(--accent-color);
+        }
+        .hero p {
+            font-size: 1.4rem;
+            margin-bottom: 2rem;
+        }
+        .cta-button {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            background: linear-gradient(to right, var(--secondary-color), var(--accent-color));
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            border: none;
+        }
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            filter: brightness(1.1);
+        }
+        .section {
+            padding: 6rem 0;
+            background-color: var(--primary-color);
+        }
+        .section:nth-child(even) {
+            background-color: var(--bg-color);
+        }
+        h2 {
+            font-size: 2.8rem;
+            margin-bottom: 2rem;
+            text-align: center;
+            color: var(--accent-color);
+            position: relative;
+        }
+        h2::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(to right, var(--secondary-color), var(--accent-color));
+            margin: 0.5rem auto 0;
+            border-radius: 2px;
+        }
+        .pricing-section {
+            background: linear-gradient(135deg, rgba(230, 192, 136, 0.2) 0%, rgba(255, 255, 255, 0.9) 100%);
+            padding: 4rem 0;
+            margin-top: 80px;
+        }
+        .pricing-container {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+        .pricing-card {
+            background-color: var(--primary-color);
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            padding: 2rem;
+            width: 300px;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 2px solid var(--secondary-color);
+            position: relative;
+            overflow: hidden;
+        }
+        .pricing-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        .pricing-card h3 {
+            font-size: 1.8rem;
+            color: var(--accent-color);
+            margin-bottom: 1rem;
+        }
+        .pricing-card .price {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin: 1rem 0;
+            color: var(--accent-color);
+        }
+        .pricing-card .original-price {
+            text-decoration: line-through;
+            color: #999;
+            font-size: 1.5rem;
+            display: block;
+        }
+        .pricing-card .discount-badge {
+            position: absolute;
+            top: 0;
+            right: 0;
+            background-color: var(--discount-color);
+            color: white;
+            padding: 0.5rem 1rem;
+            font-weight: bold;
+            transform: rotate(45deg) translateX(20px) translateY(-10px);
+            width: 150px;
+            text-align: center;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        }
+        .early-bird {
+            background: linear-gradient(to right, var(--secondary-color), var(--accent-color));
+            color: white;
+            padding: 1rem;
+            border-radius: 10px;
+            margin-top: 2rem;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+        .early-bird h3 {
+            margin: 0;
+            color: white;
+        }
+        .early-bird p {
+            margin: 0.5rem 0 0;
+        }
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+        .feature-item {
+            text-align: center;
+            padding: 2rem;
+            background: linear-gradient(135deg, white 0%, rgba(230, 192, 136, 0.2) 100%);
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+            border: 1px solid var(--secondary-color);
+        }
+        .feature-item:hover {
+            transform: translateY(-10px);
+        }
+        .feature-icon {
+            font-size: 3rem;
+            color: var(--accent-color);
+            margin-bottom: 1rem;
+        }
+        .feature-list {
+            list-style-type: none;
+            padding: 0;
+            margin: 2rem 0;
+            text-align: left;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+        }
+        .feature-list li {
+            margin-bottom: 1rem;
+            padding-left: 30px;
+            position: relative;
+        }
+        .feature-list li:before {
+            content: "\f00c";
+            font-family: 'Font Awesome 5 Free';
+            font-weight: 900;
+            position: absolute;
+            left: 0;
+            color: var(--accent-color);
+        }
+        .schedule-section {
+            background: linear-gradient(135deg, white 0%, rgba(230, 192, 136, 0.3) 100%);
+            padding: 4rem 0;
+        }
+        .schedule-container {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+        .schedule-day {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            overflow: hidden;
+            transition: transform 0.3s ease;
+        }
+        .schedule-day:hover {
+            transform: translateY(-5px);
+        }
+        .day-header {
+            background: linear-gradient(to right, var(--secondary-color), var(--accent-color));
+            color: white;
+            padding: 1rem;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+        .day-content {
+            padding: 1rem;
+        }
+        .session {
+            display: flex;
+            justify-content: space-between;
+            padding: 1rem;
+            border-bottom: 1px solid #eee;
+        }
+        .session:last-child {
+            border-bottom: none;
+        }
+        .session-time {
+            font-weight: bold;
+            color: var(--accent-color);
+            width: 100px;
+        }
+        .session-title {
+            flex-grow: 1;
+            font-weight: bold;
+        }
+        .session-description {
+            color: #666;
+            font-size: 0.9rem;
+            margin-top: 0.5rem;
+        }
+        footer {
+            background: linear-gradient(to right, var(--secondary-color), var(--accent-color));
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+        }
+        .social-links a {
+            color: white;
+            font-size: 1.5rem;
+            margin: 0 0.5rem;
+            transition: transform 0.3s;
+        }
+        .social-links a:hover {
+            transform: scale(1.2);
+        }
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            .hero p {
+                font-size: 1.2rem;
+            }
+            .section {
+                padding: 4rem 0;
+            }
+            h2 {
+                font-size: 2.2rem;
+            }
+            .pricing-container {
+                flex-direction: column;
+                align-items: center;
+            }
+            .session {
+                flex-direction: column;
+            }
+            .session-time {
+                width: auto;
+                margin-bottom: 0.5rem;
+            }
+        }
+    </style>
+</head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-DCH7PJC81R"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-DCH7PJC81R');
+</script>
+<body>
+    <nav>
+        <div class="container">
+            <a href="index.html">
+                <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/snajelogo2-rTdAcWnwctE3axbKfYKSZeHhHWF7FP.png" alt="SAT & PSAT Prep" class="logo">
+            </a>
+            <div>
+                <a href="#pricing">Pricing</a>
+                <a href="#about">About</a>
+                <a href="#features">Features</a>
+                <a href="#schedule">Schedule</a>
+                <a href="#register">Register</a>
+            </div>
+        </div>
+    </nav>
+
+
+    <header class="hero">
+        <div class="hero-content">
+            <h1>SAT & PSAT Prep Course</h1>
+            <p>Intensive Two Week Program to Boost Your Scores</p>
+            <a href="SelectCourse.html" class="cta-button">Register Now</a>
+        </div>
+    </header>
+
+    <section id="pricing" class="pricing-section">
+        <div class="container">
+            <h2>Course Options</h2>
+                <div class="early-bird">
+                <h3>Early Bird Special: Save NOW</h3>
+                <p>Early Bird Pricing until June 1st, 2025</p>
+            </div>
+            <div class="pricing-container">
+                <div class="pricing-card">
+                    
+                    <h3>Full SAT Prep Course</h3>
+                    <span class="original-price">$199.00</span>
+                    <div class="price">$175.00</div>
+                    <p>Master the quantitative sections of the SAT/PSAT</p>
+                    <ul style="text-align: left; padding-left: 20px;">
+                        <li>Reading comprehension</li>
+                        <li>Evidence based questions</li>
+                        <li>Writing and Language</li>
+                        <li>Expression of ideas</li>
+                        <li>Heart of algebra</li>
+                        <li>Problem-solving and data analysis</li>
+                        <li>Advanced math</li>
+                        <li>Geometry and trigonometry</li>
+                        <li>Statisitcal Analysis</li>
+                        
+                    </ul>
+                    <a href="SelectCourse.html" class="cta-button">Select Course</a>
+                </div>
+            </div>
+            
+
+        </div>
+    </section>
+
+    <main>
+        <section id="about" class="section">
+            <div class="container">
+                <h2>About Our Prep Course</h2>
+                <p>
+                    Unlock your potential and prepare for success with our comprehensive SAT prep courses! Designed to elevate your reading, writing, or math skills in just 2 weeks, our program provides a focused, intensive learning experience tailored to your needs. You have the flexibility to choose the course that best aligns with your goals, ensuring that you concentrate on the areas where you need the most improvement.<br><br>
+
+
+                    Each course features a 90-minute live session every day, led by one of our highly qualified expert tutors via Zoom. With class sizes limited to 15 to 20 students, we create an engaging and supportive learning environment where you can ask questions, participate actively, and receive individualized attention. Our small class settings promote collaboration among peers and foster a community of learners dedicated to achieving their SAT goals.<br><br>
+                    
+                    
+                    At SNAJE, we are committed to helping you boost your SAT score and achieve your academic aspirations. Our experienced instructors not only provide in-depth subject knowledge but also share tailored strategies and insights that can have a significant impact on your performance come test day. We believe that every student has the potential to excel, and our mission is to help you realize that potential.<br><br>
+                    
+                    
+                    The best part? Our courses are incredibly cost-effective, priced at just $200  for the complete 2-week experience! Compared to our competitors, you'll enjoy substantial savings while receiving premium instruction from top educators in the field. When you break it down, each 90-minute session costs you only a fraction of what you'd pay elsewhere, making this not just a smart choice, but a wise investment in your future.<br><br>
+                    
+                    
+                    Join us today to gain the skills, knowledge, and confidence you need to excel on the SAT. Let’s work together to pave the way for your success!
+                    
+                    
+                </p>
+            </div>
+        </section>
+
+        <section id="features" class="section">
+            <div class="container">
+                <h2>How We Improve Your SAT Scores</h2>
+                <div class="feature-grid">
+                    <div class="feature-item">
+                        <i class="fas fa-book-open feature-icon"></i>
+                        <h3>Comprehensive Review</h3>
+                        <p>Cover all SAT sections with in-depth content analysis</p>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fas fa-chess feature-icon"></i>
+                        <h3>Test Strategies</h3>
+                        <p>Learn proven techniques to maximize your score</p>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fas fa-user-graduate feature-icon"></i>
+                        <h3>Personalized Plans</h3>
+                        <p>Tailored study plans to address your specific needs</p>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fas fa-clock feature-icon"></i>
+                        <h3>Time Management</h3>
+                        <p>Master efficient time-use during the exam</p>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fas fa-brain feature-icon"></i>
+                        <h3>Mental Preparation</h3>
+                        <p>Build confidence and reduce test anxiety</p>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fas fa-chart-line feature-icon"></i>
+                        <h3>Progress Tracking</h3>
+                        <p>Monitor your improvement with practice tests</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="strategies" class="section">
+            <div class="container">
+                <h2>Best Study and Test-Taking Strategies</h2>
+                <ul class="feature-list">
+                    <li>Effective note-taking and information retention techniques</li>
+                    <li>Critical reading and analysis skills for the Reading section</li>
+                    <li>Strategic approaches to tackle different question types</li>
+                    
+                    <li>Mental math shortcuts for the No-Calculator Math section</li>
+                    <li>Strategies for eliminating wrong answer choices</li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="schedule" class="schedule-section">
+            <div class="container">
+                <h2>Course Schedule</h2>
+                <div class="schedule-container">
+                    <div class="schedule-day">
+                        <div class="day-header">SAT MATH PREP COURSE</div>
+                        <div class="day-content">
+                            <div class="session">
+                                <div class="session-time">4:00pm - 5:30pm</div>
+                                <div>
+                                    <div class="session-title">6/16/2025 - 6/27/2025</div>
+                                    <div class="session-description">Session 1</div>
+                                </div>
+                            </div>
+                            <div class="session">
+                                <div class="session-time">4:00pm - 5:30pm</div>
+                                <div>
+                                    <div class="session-title">7/7/2025 - 7/18/2025</div>
+                                    <div class="session-description">Session 2</div>
+                                </div>
+                            </div>
+                            <div class="session">
+                                <div class="session-time">4:00pm - 5:30pm</div>
+                                <div>
+                                    <div class="session-title">7/21/2025 - 8/1/2025</div>
+                                    <div class="session-description">Session 3</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    
+                </div>
+            </div>
+        </section>
+
+        <section id="register" class="section">
+            <div class="container">
+                <h2>Register Now</h2>
+                <p>
+                    Secure your spot in our upcoming SAT and PSAT Prep Course. Space is limited to ensure personalized attention for each student. Don't miss this opportunity to supercharge your test preparation!
+                </p>
+                <div style="text-align: center; margin-top: 2rem;">
+                    <a href="SelectCourse.html" class="cta-button">Enroll Today</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>SNAJE LLC</p>
+            <div class="social-links">
+                <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="#" aria-label="Facebook"><i class="fab fa-youtube"></i></a>
+                
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
